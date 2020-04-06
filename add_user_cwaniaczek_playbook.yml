@@ -8,8 +8,10 @@
       comment: "Privileged User"
       group: devops
       groups: wheel
+      append: yes
       shell: /bin/bash
-      password: papa
+      password: 458845tM!
+      password_lock: no
       create_home: yes
 ...
 
