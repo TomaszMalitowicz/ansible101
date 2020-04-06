@@ -6,10 +6,10 @@
     user:
       name: cwaniaczek
       comment: "Privileged User"
-      group: wheel
       group: devops
+      groups: wheel
       shell: /bin/bash
-      password: "hash"
+      password: papa
       create_home: yes
 ...
 
