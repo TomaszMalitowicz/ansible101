@@ -10,9 +10,11 @@
       groups: wheel
       append: yes
       shell: /bin/bash
-      password: 458845tM!
-      password_lock: no
       create_home: yes
+  - name: Unlock password and set it to empty
+      command: passwd -d cwaniaczek
+  - name: Expire password
+      command: chage -d 0 cwaniaczek
 ...
 
       
