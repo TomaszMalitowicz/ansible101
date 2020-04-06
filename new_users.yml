@@ -32,38 +32,32 @@
 
 
     - name: Create user and add him to player group
-          user:
-          name: player
-          comment: "Privileged User"
-          uid: 2001
-          group: players
-          groups: superAdmins,juniors,devops
-          apend: yes
-          shell: /bin/bash
-          generate_ssh_key: yes
-          ssh_key_bits: 2048
-          ssh_key_file: .ssh/id_rsa
+      user:
+        name: player
+        comment: "Privileged User"
+        uid: 2001
+        group: players
+        groups: superAdmins,juniors,devops
+        apend: yes
+        shell: /bin/bash
       when: ansible_distribution == 'CentOS'
 
 
     - name: Add user junior devops
-          user:
-          name: newJuniorDevops
-          comment: "Content creator UnPrivileged User"
-          uid: 2003
-          group: juniors
-          groups: devops
-          shell: /bin/bash
-          generate_ssh_key: yes
-          ssh_key_bits: 2048
-          ssh_key_file: .ssh/id_rsa
+      user:
+        name: newJuniorDevops
+        comment: "Content creator UnPrivileged User"
+        uid: 2003
+        group: juniors
+        groups: devops
+        shell: /bin/bash
       when: ansible_distribution == 'Ubuntu'
 
     - name: Remove user "Games" from remote server
-          user:
-          name: games
-          state: absent
-          remove: yes
+      user:
+        name: games
+        state: absent
+        remove: yes
 
   # Handlers: handlers that are executed as a notify key from a task
 
