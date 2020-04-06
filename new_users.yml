@@ -1,0 +1,71 @@
+---
+# YAML documents begin with the document separator ---
+
+# The minus in YAML this indicates a list item.  The playbook contains a list
+# of plays, with each play being a dictionary
+-
+  # Target: where our play will run and options it will run with
+  hosts: ubuntu3,centos3
+
+  # Task: the list of tasks that will be executed within the play, this section
+  tasks:
+    - name: Create group for players
+      group: players
+      gid: 2010
+      state: present
+
+    - name: create wheel group for admins
+      group: superAdmins
+      gid: 2011
+      state: present
+
+
+    - name: create additonal group for juniors
+      group: juniors
+      gid: 2012
+      state: present
+
+    - name: create additonal group for devops
+      group: devops
+      gid: 2013
+      state: present
+
+
+    - name: Create user and add him to player group
+          user:
+          name: player
+          comment: "Privileged User"
+          uid: 2001
+          group: players
+          groups: superAdmins,juniors,devops
+          apend: yes
+          shell: /bin/bash
+          generate_ssh_key: yes
+          ssh_key_bits: 2048
+          ssh_key_file: .ssh/id_rsa
+      when: ansible_distribution == 'CentOS'
+
+
+    - name: Add user junior devops
+          user:
+          name: newJuniorDevops
+          comment: "Content creator UnPrivileged User"
+          uid: 2003
+          group: juniors
+          groups: devops
+          shell: /bin/bash
+          generate_ssh_key: yes
+          ssh_key_bits: 2048
+          ssh_key_file: .ssh/id_rsa
+      when: ansible_distribution == 'Ubuntu'
+
+    - name: Remove user "Games" from remote server
+          user:
+          name: games
+          state: absent
+          remove: yes
+
+  # Handlers: handlers that are executed as a notify key from a task
+
+# Three dots indicate the end of a YAML document
+...

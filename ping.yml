@@ -1,0 +1,10 @@
+---
+- hosts: centos1
+  tasks:
+  - name: "Ping?"
+    ping:
+  - name: papapap
+    group: players
+    gid: 2010
+    state: present
+...
