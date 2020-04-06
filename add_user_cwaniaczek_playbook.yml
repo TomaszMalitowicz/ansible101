@@ -1,0 +1,17 @@
+---
+- hosts: centos
+
+  tasks:
+  - name: add user "cwaniaczek"
+    user:
+      name: cwaniaczek
+      comment: "Privileged User"
+      group: wheel
+      group: devops
+      shell: /bin/bash
+      password: "hash"
+      create_home: yes
+      force_pwchange: yes
+...
+
+      
