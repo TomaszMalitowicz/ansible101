@@ -34,8 +34,7 @@
         comment: "Privileged User"
         uid: 2001
         group: players
-        groups: superAdmins,juniors,devops
-        apend: yes
+        groups: superAdmins
         shell: /bin/bash
       when: ansible_distribution == 'CentOS'
 
@@ -50,9 +49,9 @@
         shell: /bin/bash
       when: ansible_distribution == 'Ubuntu'
 
-    - name: Remove user "Games" from remote server
+    - name: Remove user "junior devops" from remote server
       user:
-        name: games
+        name: newJuniorDevops
         state: absent
         remove: yes
 
