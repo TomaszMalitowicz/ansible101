@@ -12,9 +12,9 @@
       shell: /bin/bash
       create_home: yes
   - name: Unlock password and set it to empty
-      command: passwd -d cwaniaczek
+    command: passwd -d cwaniaczek
   - name: Expire password
-      command: chage -d 0 cwaniaczek
+    command: chage -d 0 cwaniaczek
 ...
 
       
