@@ -1,3 +1,7 @@
+
+instalacja pod aws:
+https://medium.com/datadriveninvestor/devops-using-ansible-to-provision-aws-ec2-instances-3d70a1cb155f
+
 Ansible Training:
 dnsmasq
 192.168.100.6
